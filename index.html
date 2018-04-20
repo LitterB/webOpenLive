@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head >
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>视频采集</title>
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
-  <script src="lib/AgoraRTCSDK-2.1.1.js"></script>
-  <script src="vendor/jquery.js"></script>
+  
 </head>
 
 <body>
-  <div id="div_device" class="panel panel-default">
-    <div class="select">
-      <label for="audioSource">音频源: </label>
-      <select id="audioSource"></select>
+  <header>
+    <div class="container">
+      <h5 style="padding: 10px 15px;">视频采集</h5>
     </div>
-    <div class="select">
-      <label for="videoSource">视频源: </label>
-      <select id="videoSource"></select>
-    </div>
-  </div>
-
-  <div id="div_join" class="panel panel-default">
-    <div class="panel-body">
-      Key:
-      <input id="key" type="text" value="4473c34b8cb74511adf1d6d90083ebee" size="36"></input>
-      Channel:
-      <input id="channel" type="text" value="1000" size="4"></input>
-      Host:
-      <input id="video" type="checkbox" checked></input>
-      <button id="join" class="btn btn-primary" onclick="join()">加入</button>
-      <button id="leave" class="btn btn-primary" onclick="leave()">离开</button>
-      <button id="publish" class="btn btn-primary" onclick="publish()">发布</button>
-      <button id="unpublish" class="btn btn-primary" onclick="unpublish()">取消发布</button>
-    </div>
-  </div>
-
-  <!--style>
-    .video__box{width:910px; margin:0 auto; overflow:hidden;}
-    .video__main{ width:810px; height:607px;float:left }
-    .video__list{ width:200px; height:607px; float:left;}
-    .video__item{ width:200px; height:174px; hei background:url(/img/icon_live.png) center center no-repeat; }
-    </style>
-    <div class="video__main">
-    </div>
-    <div class="video__list">
-        <div class="video__item"></div>
-        <div id="video" class="video__item">
-            <div id="agora_local"></div>
+  </header>
+  <section>
+    <div class="card" style="margin-top: 10px">
+      <div id="div_device" class="container" style="padding: 1.15rem 0 0 1.15rem;">
+        <div class="select form-group col-md-12">
+          <label for="audioSource">音频源: </label>
+          <select id="audioSource" class="form-control"></select>
         </div>
-    </div-->
+        <div class="select form-group col-md-12">
+          <label for="videoSource">视频源: </label>
+          <select id="videoSource" class="form-control"></select>
+        </div>
+      </div>
+      <div id="div_join" class="container">
+        <input id="key" type="hidden" value="4473c34b8cb74511adf1d6d90083ebee" size="36"></input>
+        <div class="form-group col-md-12">
+          <label for="channel">频道:</label>
+          <input id="channel" type="text" value="1000" size="36" class="form-control"></input>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="video">主机:</label>
+          <input id="video" type="checkbox" checked></input>
+        </div>
+        <div class="form-group col-md-12">
+          <button id="join" class="btn btn-primary" onclick="join()">加入</button>
+          <button id="leave" class="btn btn-primary" onclick="leave()">离开</button>
+          <button id="publish" class="btn btn-primary" onclick="publish()">发布</button>
+          <button id="unpublish" class="btn btn-primary" onclick="unpublish()">取消发布</button>
+        </div>
+      </div>
+    </div>
+    <div id="video" class="container" style="margin:0 auto;">
+      <div id="agora_local" class="form-control" style="float: right;width:210px;height:147px;display:inline-block; box-shadow: 1px 1px 5px #999"></div>
+    </div>
+  </section>
 
-  <div id="video" style="margin:0 auto;">
-    <div id="agora_local" style="float:right;width:210px;height:147px;display:inline-block;"></div>
-  </div>
-
+  <script src="lib/AgoraRTCSDK-2.1.1.js"></script>
+  <script src="vendor/jquery.js"></script>
   <script language="javascript">
 
     if (!AgoraRTC.checkSystemRequirements()) {
@@ -226,9 +222,6 @@
         }
       });
     }
-
-    //audioSelect.onchange = getDevices;
-    //videoSelect.onchange = getDevices;
     getDevices();
   </script>
 </body>
